@@ -1,6 +1,3 @@
-//enemy speed
-var enemySpeeds = [200, 300, 400, 500]
-
 // Enemies our player must avoid
 var Enemy = function(y) {
     // Variables applied to each of our instances go here,
@@ -10,6 +7,7 @@ var Enemy = function(y) {
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
     // Use a random Math method to generate the speed of our ennemies
+    var enemySpeeds = [200, 300, 400, 500]
     this.speed = enemySpeeds[(Math.floor(Math.random() * enemySpeeds.length))] - 100;
     this.x = 0;
     this.y = y;
@@ -18,12 +16,18 @@ var Enemy = function(y) {
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    this.x += this.speed * dt
-    //this.y += this.speed * dt
-
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    // Adding logic to reset the placement of the ennemy when it is leaving the canvas
+    if (this.x < 505) {
+        this.x += this.speed * dt;
+    }
+    else {
+        this.x = 0;
+    }
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+
 };
 
 // Draw the enemy on the screen, required method for game
@@ -60,7 +64,7 @@ Player.prototype.handleInput = function(keyCode) {
     // Now instantiate your objects.
     // Place all enemy objects in an array called allEnemies
     // Place the player object in a variable called player
-var allEnemies = [new Enemy(50), new Enemy(150), new Enemy(220)];
+var allEnemies = [new Enemy(50), new Enemy(135), new Enemy(220)];
 var player = new Player(0, 200);
 
 // This listens for key presses and sends the keys to your

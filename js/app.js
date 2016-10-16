@@ -20,7 +20,7 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     // Adding logic to reset the placement of the ennemy when it is leaving the canvas
-    if (this.x < 505) {
+    if (this.x < ctx.canvas.width) {
         this.x += this.speed * dt;
     }
     else {

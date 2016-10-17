@@ -13,6 +13,15 @@ var Enemy = function(y) {
     this.y = y;
 };
 
+var collision = function() {
+    for (item in allEnemies) {
+        if (player.x === item.x)
+            player.reset()
+    }
+}
+
+collision();
+
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
@@ -20,6 +29,10 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     // Adding logic to reset the placement of the ennemy when it is leaving the canvas
+    if (player.y > this.y - 20 && player.y < this.y + 20 && player.x > this.x - 20 && player.x < this.x + 20)
+        player.reset()
+    console.log(player.x, player.y, this.y, this.y + 66)
+
     if (this.x < ctx.canvas.width) {
         this.x += this.speed * dt;
 
@@ -63,9 +76,7 @@ Player.prototype.reset = function() {
 }
 
 Player.prototype.handleInput = function(keyPressed) {
-        console.log(keyPressed);
-        
-            //Including movement and limiting the playable zone
+        //Including movement and limiting the playable zone
         if (keyPressed === 'left' && this.x > 0) {
             this.x = this.x - 100
         } else if (keyPressed === 'right' && this.x < 400) {
@@ -79,7 +90,7 @@ Player.prototype.handleInput = function(keyPressed) {
         } else if (keyPressed === 'down' && this.y < 300) {
             this.y = this.y + 85
         }
-        console.log(this.x, this.y)
+
     }
     // Now instantiate your objects.
     // Place all enemy objects in an array called allEnemies
@@ -112,3 +123,5 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+//Manage Collision

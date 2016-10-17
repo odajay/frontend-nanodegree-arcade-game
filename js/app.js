@@ -58,13 +58,15 @@ Player.prototype.render = function() {
 
 Player.prototype.handleInput = function(keyPressed) {
         console.log(keyPressed);
-        if (keyPressed === 'left') {
+        console.log(this.x, this.y)
+        //Including movement and limiting the playable zone
+        if (keyPressed === 'left' && this.x > 0) {
             this.x = this.x - 100
-        } else if (keyPressed === 'right') {
+        } else if (keyPressed === 'right' && this.x < 400) {
             this.x = this.x + 100
-        } else if (keyPressed === 'up') {
+        } else if (keyPressed === 'up' && this.y > 0) {
             this.y = this.y - 85
-        } else if (keyPressed === 'down') {
+        } else if (keyPressed === 'down' && this.y < 300) {
             this.y = this.y + 85
         }
     }
@@ -84,7 +86,6 @@ for (var i = 0; i < numberEnemies; i++) {
         //randomize y position for ennemy
     allEnemies[i].y = this.y = getRandomYInt();
 }
-
 
 
 // This listens for key presses and sends the keys to your

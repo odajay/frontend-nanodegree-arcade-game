@@ -12,4 +12,4 @@ If you touch one of the Beetle, your score is reseted.
 
 #Extra
 
-For extra credit I included the gem and the scoring logic. I also included a font from the Google Fonts project which match the theme of the exercise: (Press Start 2P)[https://fonts.google.com/specimen/Press+Start+2P].
+For extra credit I included the gem and the scoring logic. I also included a font from the Google Fonts project which match the theme of the exercise: [Press Start 2P](https://fonts.google.com/specimen/Press+Start+2P).

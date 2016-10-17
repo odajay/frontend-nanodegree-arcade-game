@@ -56,16 +56,22 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
-Player.prototype.handleInput = function(keyCode) {
-        console.log(keyCode);
-        if (keyCode === 37) {
-            this.x = this.x + 1
+Player.prototype.handleInput = function(keyPressed) {
+        console.log(keyPressed);
+        if (keyPressed === 'left') {
+            this.x = this.x - 100
+        } else if (keyPressed === 'right') {
+            this.x = this.x + 100
+        } else if (keyPressed === 'up') {
+            this.y = this.y - 85
+        } else if (keyPressed === 'down') {
+            this.y = this.y + 85
         }
     }
     // Now instantiate your objects.
     // Place all enemy objects in an array called allEnemies
     // Place the player object in a variable called player
-var player = new Player(200, 435);
+var player = new Player(200, 380);
 
 // Instance Enemy in variables to manage multiple ones
 

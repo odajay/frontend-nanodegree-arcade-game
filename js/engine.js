@@ -100,6 +100,7 @@ var Engine = (function(global) {
         });
         player.update();
         gem.update();
+
         //score.update();
     }
 
@@ -160,6 +161,7 @@ var Engine = (function(global) {
         player.render();
         gem.render();
         score.render();
+
     }
 
     /* This function does nothing but it could have been a good place to

@@ -29,8 +29,11 @@ Enemy.prototype.update = function(dt) {
     // which will ensure the game runs at the same speed for
     // all computers.
     // Adding logic to reset the placement of the ennemy when it is leaving the canvas or having a collision
-    if (player.y > this.y - 20 && player.y < this.y + 20 && player.x > this.x - 20 && player.x < this.x + 80)
-        player.reset()
+    if (player.y > this.y - 20 && player.y < this.y + 20 && player.x > this.x - 20 && player.x < this.x + 80) {
+        player.reset();
+        scorenow = 0;
+        score.update();
+    }
 
     if (this.x < ctx.canvas.width) {
         this.x += this.speed * dt;
@@ -109,20 +112,23 @@ for (var i = 0; i < numberEnemies; i++) {
     allEnemies[i].y = this.y = getRandomYInt();
 }
 
-var Score = function(){
+var Score = function() {
 
 }
 
-Score.prototype.render = function(){
+Score.prototype.render = function() {
     ctx.font = "36pt Impact";
     ctx.textAlign = "center";
-    ctx.fillText("Score: " + scorenow, 200, 40);
+    ctx.fillText("Score: " + scorenow, 80, 40);
 }
 
 var scorenow = 0;
 
-Score.prototype.update = function(dt){
-    ctx.clearRect(0,0,505,404)
+Score.prototype.update = function(dt) {
+    ctx.clearRect(0, 0, 505, 404)
+}
+
+Score.prototype.scorePlusOne = function() {
     return scorenow += 1;
 }
 
@@ -148,7 +154,10 @@ Gem.prototype.reset = function() {
 Gem.prototype.update = function(dt) {
     if (player.y > this.y - 80 && player.y < this.y + 80 && player.x > this.x - 80 && player.x < this.x + 80) {
         gem.reset();
-        score.update();}
+        score.update();
+        score.scorePlusOne();
+
+    }
     this.x = this.x;
     this.y = this.y;
     console.log(score);

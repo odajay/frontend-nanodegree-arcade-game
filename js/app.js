@@ -111,12 +111,28 @@ for (var i = 0; i < numberEnemies; i++) {
 
 var Gem = function() {
     this.sprite = getRandomGem();
-    this.x = getRandomInt(100,500);
-    this.y = getRandomInt(100,500);
+    this.x = getRandomInt(50, 450);
+    this.y = getRandomInt(50, 280);
 }
 
 Gem.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+}
+
+Gem.prototype.reset = function() {
+    this.x = getRandomInt(50, 450)
+    this.y = getRandomInt(50, 280)
+}
+
+
+Gem.prototype.update = function(dt) {
+    if (player.y > this.y - 80 && player.y < this.y + 80 && player.x > this.x - 80 && player.x < this.x + 80)
+        gem.reset()
+    console.log(player.x, player.y, gem.x, gem.y)
+
+
+    this.x = this.x;
+    this.y = this.y;
 }
 
 var gem = new Gem();
@@ -133,5 +149,3 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
-
-//Manage Collision

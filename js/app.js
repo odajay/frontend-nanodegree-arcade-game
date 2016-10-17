@@ -109,6 +109,26 @@ for (var i = 0; i < numberEnemies; i++) {
     allEnemies[i].y = this.y = getRandomYInt();
 }
 
+var Score = function(){
+
+}
+
+Score.prototype.render = function(){
+    ctx.font = "36pt Impact";
+    ctx.textAlign = "center";
+    ctx.fillText("Score: " + scorenow, 200, 40);
+}
+
+var scorenow = 0;
+
+Score.prototype.update = function(dt){
+    ctx.clearRect(0,0,505,404)
+    return scorenow += 1;
+}
+
+
+score = new Score();
+
 var Gem = function() {
     this.sprite = getRandomGem();
     this.x = getRandomInt(50, 450);
@@ -126,16 +146,17 @@ Gem.prototype.reset = function() {
 
 
 Gem.prototype.update = function(dt) {
-    if (player.y > this.y - 80 && player.y < this.y + 80 && player.x > this.x - 80 && player.x < this.x + 80)
-        gem.reset()
-    console.log(player.x, player.y, gem.x, gem.y)
-
-
+    if (player.y > this.y - 80 && player.y < this.y + 80 && player.x > this.x - 80 && player.x < this.x + 80) {
+        gem.reset();
+        score.update();}
     this.x = this.x;
     this.y = this.y;
+    console.log(score);
 }
 
 var gem = new Gem();
+
+
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.

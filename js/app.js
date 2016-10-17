@@ -56,23 +56,35 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 }
 
+//Creating a player reset event for when finish the game or lose
+Player.prototype.reset = function() {
+    this.x = 200,
+        this.y = 380
+}
+
 Player.prototype.handleInput = function(keyPressed) {
         console.log(keyPressed);
-        console.log(this.x, this.y)
-        //Including movement and limiting the playable zone
+        
+            //Including movement and limiting the playable zone
         if (keyPressed === 'left' && this.x > 0) {
             this.x = this.x - 100
         } else if (keyPressed === 'right' && this.x < 400) {
             this.x = this.x + 100
-        } else if (keyPressed === 'up' && this.y > 0) {
+        } // Reset stance for when player finish the game
+        else if (keyPressed === 'up' && this.y === 40) {
+            player.reset()
+        } else if (keyPressed === 'up' && this.y > 40) {
             this.y = this.y - 85
+
         } else if (keyPressed === 'down' && this.y < 300) {
             this.y = this.y + 85
         }
+        console.log(this.x, this.y)
     }
     // Now instantiate your objects.
     // Place all enemy objects in an array called allEnemies
     // Place the player object in a variable called player
+
 var player = new Player(200, 380);
 
 // Instance Enemy in variables to manage multiple ones

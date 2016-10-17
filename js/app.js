@@ -8,7 +8,7 @@ var Enemy = function(y) {
     this.sprite = 'images/enemy-bug.png';
     // Use a random Math method to generate the speed of our ennemies via helper.js
 
-    this.speed = getRandomInt(100,500);
+    this.speed = getRandomInt(100, 500);
     this.x = 0;
     this.y = y;
 };
@@ -22,8 +22,8 @@ Enemy.prototype.update = function(dt) {
     // Adding logic to reset the placement of the ennemy when it is leaving the canvas
     if (this.x < ctx.canvas.width) {
         this.x += this.speed * dt;
-    }
-    else {
+
+    } else {
         this.x = 0;
     }
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
@@ -64,8 +64,21 @@ Player.prototype.handleInput = function(keyCode) {
     // Now instantiate your objects.
     // Place all enemy objects in an array called allEnemies
     // Place the player object in a variable called player
-var allEnemies = [new Enemy(50), new Enemy(135), new Enemy(220)];
 var player = new Player(0, 200);
+
+// Instance Enemy in variables to manage multiple ones
+
+var allEnemies = [];
+var numberEnemies = 4;
+
+
+for (var i = 0; i < numberEnemies; i++) {
+    allEnemies.push(new Enemy())
+        //randomize y position for ennemy
+    allEnemies[i].y = this.y = getRandomYInt();
+}
+
+
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.

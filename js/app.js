@@ -48,8 +48,8 @@ var Player = function(x, y) {
 }
 
 Player.prototype.update = function(dt) {
-    this.x = this.x * dt
-    this.y = this.y * dt
+    this.x = this.x;
+    this.y = this.y;
 };
 
 Player.prototype.render = function() {
@@ -57,6 +57,7 @@ Player.prototype.render = function() {
 }
 
 Player.prototype.handleInput = function(keyCode) {
+        console.log(keyCode);
         if (keyCode === 37) {
             this.x = this.x + 1
         }
@@ -64,7 +65,7 @@ Player.prototype.handleInput = function(keyCode) {
     // Now instantiate your objects.
     // Place all enemy objects in an array called allEnemies
     // Place the player object in a variable called player
-var player = new Player(0, 200);
+var player = new Player(200, 435);
 
 // Instance Enemy in variables to manage multiple ones
 

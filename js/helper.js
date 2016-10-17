@@ -9,6 +9,11 @@ function getRandomInt(min, max) {
 }
 
 function getRandomYInt() {
-	var item = [50,130,215]
+	var item = [50,130,215];
     return item[Math.floor(Math.random() * item.length)];
+}
+
+function getRandomGem() {
+	var gem = ['images/Gem Blue.png','images/Gem Green.png','images/Gem Orange.png',];
+	return gem[Math.floor(Math.random() * gem.length)]
 }

@@ -8,7 +8,7 @@ var Enemy = function(y) {
     this.sprite = 'images/enemy-bug.png';
     // Use a random Math method to generate the speed of our ennemies via helper.js
 
-    this.speed = getRandomInt(100, 500);
+    this.speed = getRandomInt(100, 300);
     this.x = 0;
     this.y = y;
 };
@@ -28,10 +28,9 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    // Adding logic to reset the placement of the ennemy when it is leaving the canvas
-    if (player.y > this.y - 20 && player.y < this.y + 20 && player.x > this.x - 20 && player.x < this.x + 20)
+    // Adding logic to reset the placement of the ennemy when it is leaving the canvas or having a collision
+    if (player.y > this.y - 20 && player.y < this.y + 20 && player.x > this.x - 20 && player.x < this.x + 80)
         player.reset()
-    console.log(player.x, player.y, this.y, this.y + 66)
 
     if (this.x < ctx.canvas.width) {
         this.x += this.speed * dt;
@@ -110,6 +109,17 @@ for (var i = 0; i < numberEnemies; i++) {
     allEnemies[i].y = this.y = getRandomYInt();
 }
 
+var Gem = function() {
+    this.sprite = getRandomGem();
+    this.x = getRandomInt(100,500);
+    this.y = getRandomInt(100,500);
+}
+
+Gem.prototype.render = function() {
+    ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+}
+
+var gem = new Gem();
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.

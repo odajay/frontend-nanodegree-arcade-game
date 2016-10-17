@@ -117,9 +117,10 @@ var Score = function() {
 }
 
 Score.prototype.render = function() {
-    ctx.font = "36pt Impact";
+    ctx.clearRect(0, 0, 505, 45);
+    ctx.font = "18pt 'Press Start 2P'";
     ctx.textAlign = "center";
-    ctx.fillText("Score: " + scorenow, 80, 40);
+    ctx.fillText("Score: " + scorenow, 100, 40);
 }
 
 var scorenow = 0;

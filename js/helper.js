@@ -5,15 +5,18 @@
 // http://stackoverflow.com/questions/1527803/generating-random-whole-numbers-in-javascript-in-a-specific-range/1527820#1527820
 
 function getRandomInt(min, max) {
+    'use strict';
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function getRandomYInt() {
-	var item = [50,130,215];
+    'use strict';
+    var item = [50,130,215];
     return item[Math.floor(Math.random() * item.length)];
 }
 
 function getRandomGem() {
-	var gem = ['images/Gem Blue.png','images/Gem Green.png','images/Gem Orange.png',];
-	return gem[Math.floor(Math.random() * gem.length)]
+    'use strict';
+    var gem = ['images/Gem Blue.png','images/Gem Green.png','images/Gem Orange.png'];
+    return gem[Math.floor(Math.random() * gem.length)];
 }

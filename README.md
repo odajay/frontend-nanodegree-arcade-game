@@ -7,7 +7,7 @@ The game is based on a classic [Frogger](https://en.wikipedia.org/wiki/Frogger) 
 
 * Download all the files from the repository and open index.html to play
 * Your goal is to collect the rubies and obtain the best score as possible.
-* Beware! If you touch one of the Beetle, your score is reseted.
+* Beware! If you touch one of the Beetle, your score is reset.
 * Move the keyboard directional arrows (up/down/left/right) in order to move your player.
 
 #Extra

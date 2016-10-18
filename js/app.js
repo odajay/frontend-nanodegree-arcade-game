@@ -82,7 +82,7 @@ Player.prototype.handleInput = function(keyPressed) {
         this.x = this.x + 100;
     } // Reset stance for when player finish the game
     else if (keyPressed === 'up' && this.y === 40) {
-        player.reset();
+        this.reset();
     } else if (keyPressed === 'up' && this.y > 40) {
         this.y = this.y - 85;
 
@@ -115,18 +115,6 @@ var position = function() {
 
 position();
 
-
-//Adding collision detection
-var collision = function() {
-    'use strict';
-    var i;
-    for (i = 0; i < allEnemies.length; i += 1) {
-        if (player.x === allEnemies[i].x) { player.reset(); }
-    }
-};
-
-
-collision();
 
 //Initializing class for scoreboard
 Score = function() {
@@ -183,7 +171,7 @@ Gem.prototype.reset = function() {
 Gem.prototype.update = function(dt) {
     'use strict';
     if (player.y > this.y - 80 && player.y < this.y + 80 && player.x > this.x - 80 && player.x < this.x + 80) {
-        gem.reset();
+        this.reset();
         score.wipe();
         score.scorePlusOne();
 

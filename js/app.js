@@ -23,7 +23,7 @@ Enemy.prototype.update = function(dt) {
     if (player.y > this.y - 20 && player.y < this.y + 20 && player.x > this.x - 20 && player.x < this.x + 80) {
         player.reset();
         scorenow = 0;
-        score.update();
+        score.wipe();
     }
 
     if (this.x < ctx.canvas.width) {
@@ -145,7 +145,7 @@ Score.prototype.render = function() {
 //Keeping the current score
 var scorenow = 0;
 
-Score.prototype.update = function(dt) {
+Score.prototype.wipe = function(dt) {
     'use strict';
     ctx.clearRect(0, 0, 505, 404);
 };
@@ -184,7 +184,7 @@ Gem.prototype.update = function(dt) {
     'use strict';
     if (player.y > this.y - 80 && player.y < this.y + 80 && player.x > this.x - 80 && player.x < this.x + 80) {
         gem.reset();
-        score.update();
+        score.wipe();
         score.scorePlusOne();
 
     }
